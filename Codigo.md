@@ -237,8 +237,8 @@ def obtener_estado(horas_uso, intervalo, ultimo_mantenimiento):
     """
     Devuelve uno de estos estados:
     - VENCIDO: se alcanzó o superó la lectura prevista.
-    - PRÓXIMO: falta el 10 % o menos del intervalo.
-    - AL DÍA: falta más del 10 % del intervalo.
+    - PRÓXIMO: falta el 20 % o menos del intervalo.
+    - AL DÍA: falta más del 20 % del intervalo.
     """
 
     # Calcular a qué lectura del contador toca el siguiente mantenimiento.
@@ -252,9 +252,9 @@ def obtener_estado(horas_uso, intervalo, ultimo_mantenimiento):
         return "VENCIDO"
 
     # CAMBIO PERSONALIZABLE:
-    # 0.10 significa 10 % del intervalo.
-    # Por ejemplo, cambia 0.10 por 0.20 para avisar cuando falte el 20 %.
-    if diferencia <= intervalo * 0.10:
+    # 0.20 significa 20 % del intervalo.
+    # Por ejemplo, cambia 0.20 por 0.30 para avisar cuando falte el 30 %.
+    if diferencia <= intervalo * 0.20:
         return "PRÓXIMO"
 
     # Si no cumple las condiciones anteriores, está al día.
